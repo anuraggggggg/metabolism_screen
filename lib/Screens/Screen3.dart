@@ -73,14 +73,14 @@ class _Screen3State extends State<Screen3> {
                     axes: <RadialAxis>[
                       RadialAxis(
                         useRangeColorForAxis: false,
-                        tickOffset: 20,
-                        ticksPosition: ElementsPosition.inside,
-                        minorTicksPerInterval: 10,
+                        // tickOffset: 20,
+                        // ticksPosition: ElementsPosition.inside,
+                        // minorTicksPerInterval: 10,
                         minorTickStyle:
-                            MinorTickStyle(thickness: 0.5, color: Colors.black),
+                            MinorTickStyle(thickness: 0.7, color: Colors.black),
                         pointers: <GaugePointer>[
                           RangePointer(
-                            value: 35,
+                            value: 3,
                             enableAnimation: true,
                             gradient: const SweepGradient(colors: [
                               Color(0xffFF0D0D),
@@ -93,8 +93,8 @@ class _Screen3State extends State<Screen3> {
                           )
                         ],
                         showTicks: false,
-                        minimum: 0,
-                        maximum: 50,
+                        minimum: -10,
+                        maximum: 5,
                         startAngle: 180,
                         endAngle: 0,
                         interval: 5,
@@ -104,20 +104,24 @@ class _Screen3State extends State<Screen3> {
                           GaugeRange(
                               startValue: 0,
                               endValue: 180,
-                              color: Colors.white.withOpacity(0.1))
+                              color: Colors.white.withOpacity(0.1),
+                          )
+
                         ],
-                        annotations: <GaugeAnnotation>[
+                        annotations: const <GaugeAnnotation>[
                           GaugeAnnotation(
                             angle: 0,
                             widget: Padding(
-                              padding: const EdgeInsets.only(bottom: 100),
+                              padding: EdgeInsets.only(bottom: 100),
                               child: Text(
-                                "+30",
+                                "+3",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 40),
                               ),
                             ),
-                          )
+                          ),
+                          GaugeAnnotation(widget: Text("Healthy Years", style: TextStyle(fontSize: 20),)),
+
                         ],
                       )
                     ],
@@ -152,12 +156,12 @@ class _Screen3State extends State<Screen3> {
                                   color: Colors.grey.shade100,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(6.0),
+                                  padding: const EdgeInsets.all(1.0),
                                   child: Text("Average Glucose"),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(5.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: Colors.grey.shade100,
@@ -185,54 +189,6 @@ class _Screen3State extends State<Screen3> {
                                       style: TextStyle(color: Colors.green)),
                                 )),
                           ),
-                        ),
-                        Align(
-                            alignment: Alignment.centerRight,
-                            child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.grey,
-                                ))),
-                      ]),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    height: 80,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey)),
-                    child: Expanded(
-                      child: Row(children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Text("Average Glucose"),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text("87 mg/ Dl",
-                                    style: TextStyle(color: Colors.grey)),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                              height: 30,
-                              width: 87,
-                              decoration:
-                                  BoxDecoration(color: Colors.green.shade50),
-                              child: Center(
-                                child: Text("Optimal",
-                                    style: TextStyle(color: Colors.green)),
-                              )),
                         ),
                         Align(
                             alignment: Alignment.centerRight,
@@ -302,19 +258,24 @@ class _Screen3State extends State<Screen3> {
                         border: Border.all(color: Colors.grey)),
                     child: Expanded(
                       child: Row(children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("Morning fasting gluscose"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("83 mg/ Dl",
-                                  style: TextStyle(color: Colors.grey)),
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey.shade100,
+                                  )
+                                ),
+                                  child: Text("Morning fasting gluscose",  textAlign: TextAlign.center,)
+                              ),
+                              Center(
+                                child: Text("83 mg/ Dl",
+                                    style: TextStyle(color: Colors.grey, )),
+                              ),
+                            ],
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10),
